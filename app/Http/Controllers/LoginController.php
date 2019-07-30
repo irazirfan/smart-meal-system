@@ -43,7 +43,7 @@ class LoginController extends Controller
 				return redirect()->route('home.index');
 			}else{
 				$req->session()->flash('msg', 'invalid email or password');
-				return view('login.login');
+				return redirect()->route('login.login');
 			}
 
         }
