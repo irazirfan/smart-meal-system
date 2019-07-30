@@ -41,10 +41,10 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-8">
                                 <div class="form-group">
-                                    <select style="height: 100%; width: 100%;padding-top: 1px">
-                                    <option name="user_type" value="">Select User Type</option>
-                                    <option name="user_type" value="memeber">Member</option>
-                                    <option name="user_type" value="manager">Manager</option>
+                                    <select id="user_type" name="user_type" style="height: 100%; width: 100%;padding-top: 1px">
+                                    <option value="">Select User Type</option>
+                                    <option value="member">Member</option>
+                                    <option value="manager">Manager</option>
                                 </select>
                                 </div>
                             </div>

@@ -15,9 +15,14 @@
                 <div class="panel-body">
                     <form role="form" method="post">
 
+                        {{csrf_field()}} 
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"> 
+                       <!--  @csrf -->
+
                         <div class="form-group">
                             <input type="text" name="email" id="email" class="form-control input-sm"
                                    placeholder="Email Address">
+                                   {{session('msg')}}
             
                         </div>
 
@@ -30,6 +35,8 @@
                         <input type="submit" value="Login" class="btn btn-info btn-block">
 
                     </form>
+
+                    
 
                 </div>
             </div>

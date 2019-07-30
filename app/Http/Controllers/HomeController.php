@@ -26,12 +26,6 @@ class HomeController extends Controller
 	// 	}
  //    }
 
-    public function login(){
-
-        return view('home/login');
-    }
-
-
     public function register(){
 
     	return view('home/register');
@@ -43,7 +37,7 @@ class HomeController extends Controller
         $user->name = $req->name;
     	$user->email = $req->email;
     	$user->password = $req->password;
-    	$user->type = "member";
+    	$user->user_type = $req->user_type;
     	$user->save();
 
     	//$data = User::where('email', $req->email)->where('password', $req->password)->get();
@@ -101,5 +95,10 @@ class HomeController extends Controller
     public function contact(){
 
         return view('home/contact');
+    }
+
+    public function index(){
+
+        return view('home.index');
     }
 }
