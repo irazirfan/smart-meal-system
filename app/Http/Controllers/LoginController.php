@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class LoginController extends Controller
 {
@@ -15,17 +18,34 @@ class LoginController extends Controller
 
 	public function verify(Request $req){	
 
-		$result = DB::table('users')->where('email', $req->email)
-				->where('password', $req->password)
-				->get();
-		
-		if(count($result) > 0){
+		$validator = Validator::make($req->all(), [
+            
+            "email"     => "required",
+            "password"  => "required"
 
-			$req->session()->put('user', $req->email);
-			return redirect()->route('home.index');
-		}else{
-			$req->session()->flash('msg', 'invalid email or password');
-			return view('login/login');
-		}
-	}
+        ]);
+
+        if($validator->fails()){
+
+            return back()
+                    ->with('errors', $validator->errors())
+                    ->withInput();
+        }
+
+        else{
+				$result = DB::table('users')->where('email', $req->email)
+					->where('password', $req->password)
+					->get();
+			
+			if(count($result) > 0){
+
+				$req->session()->put('user', $req->email);
+				return redirect()->route('home.index');
+			}else{
+				$req->session()->flash('msg', 'invalid email or password');
+				return view('login.login');
+			}
+
+        }
+    }
 }

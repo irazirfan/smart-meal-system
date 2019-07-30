@@ -57,6 +57,11 @@
                             </div>
                         </div>
                 </form>
+
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br>
+                @endforeach
+
             </div>
         </div>
 

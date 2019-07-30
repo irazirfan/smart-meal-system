@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,21 @@ class HomeController extends Controller
 
     public function signup(Request $req){
 
+        $validator = Validator::make($req->all(), [
+
+            "name"      => "required",
+            "email"     => "required | unique:users,email",
+            "password"  => "required|min:4",
+            "user_type" => "required"
+        ]);
+
+        if($validator->fails()){
+
+            return back()
+                    ->with('errors', $validator->errors())
+                    ->withInput();
+        }
+
     	$user = new User();
         $user->name = $req->name;
     	$user->email = $req->email;
@@ -40,8 +56,7 @@ class HomeController extends Controller
     	$user->user_type = $req->user_type;
     	$user->save();
 
-    	//$data = User::where('email', $req->email)->where('password', $req->password)->get();
-    	return view('home.login');
+    	return view('login.login');
     }
 
 	public function details($id){
