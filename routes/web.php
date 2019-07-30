@@ -20,9 +20,13 @@ Route::get('/search', 'HomeController@getEmail');
 //Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', ['uses'=>'LoginController@verify']);
+Route::get('/logout', 'LogoutController@index')->name('logout.index');
 Route::get('/register', 'HomeController@register')->name('register');
 Route::post('/register', 'HomeController@signup')->name('signup');
-Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/home', 'HomeController@index')->name('home.index');
+
+Route::group(['middleware'=>['authorize']], function(){
+
+	Route::get('/home', 'HomeController@index')->name('home.index');
+});

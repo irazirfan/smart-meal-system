@@ -13,8 +13,15 @@
             <li id="home"><a href="/">HOME</a></li>
             <li id="about"><a href="about">ABOUT US</a></li>
             <li id="contact"><a href="contact">CONTACT US</a></li>
-            <li id=""><a href="/register">SIGN UP</a></li>
-            <li id=""><a href="/login">LOGIN</a></li>
+            
+            @if(session()->has('user')){
+                <li id=""><a href="/logout">LOGOUT</a></li>
+            }
+            @else{
+                <li id=""><a href="/register">SIGN UP</a></li>
+                <li id=""><a href="/login">LOGIN</a></li>
+            }
+            @endif
 
         </ul>
     </div>
