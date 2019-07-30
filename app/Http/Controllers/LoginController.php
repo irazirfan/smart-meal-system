@@ -33,9 +33,15 @@ class LoginController extends Controller
         }
 
         else{
-				$result = DB::table('users')->where('email', $req->email)
-					->where('password', $req->password)
-					->get();
+        		//queryBuilder
+				// $result = DB::table('users')->where('email', $req->email)
+				// 	->where('password', $req->password)
+				// 	->get();
+
+        	//Eloquent ORM
+        	$result = User::where('email', $req->email)
+        			->where('password', $req->password)	
+        			->get();
 			
 			if(count($result) > 0){
 
@@ -43,7 +49,7 @@ class LoginController extends Controller
 				return redirect()->route('home.index');
 			}else{
 				$req->session()->flash('msg', 'invalid email or password');
-				return redirect()->route('login.login');
+				return redirect()->route('login');
 			}
 
         }

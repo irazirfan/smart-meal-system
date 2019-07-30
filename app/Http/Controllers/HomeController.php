@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -37,7 +38,8 @@ class HomeController extends Controller
         $validator = Validator::make($req->all(), [
 
             "name"      => "required",
-            "email"     => "required | unique:users,email",
+            // "email"     => "required | unique:users,email",
+            "email"     => "required",
             "password"  => "required|min:4",
             "user_type" => "required"
         ]);
@@ -115,5 +117,20 @@ class HomeController extends Controller
     public function index(){
 
         return view('home.index');
+    }
+
+    public function getEmail(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output="";
+            $users=User::where('email','LIKE','%'.$request->search."%")
+                        ->get();
+            if(sizeof($users) > 0)
+            {
+                $output = 'true';
+            }
+            return Response($output);
+        }
     }
 }

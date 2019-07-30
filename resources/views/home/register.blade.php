@@ -27,14 +27,17 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-8">
                             <div class="form-group">
-                                <input type="text" name="email" class="form-control input-sm"
+                                <input id="email" type="text" name="email" class="form-control input-sm"
                                        placeholder="Email">
+                                       <span id="email_exist" style="color: red">
+                                           
+                                       </span>
                                 </div>
                             </div>
                             
                             <div class="col-xs-6 col-sm-6 col-md-8">
                                 <div class="form-group">
-                                <input type="password" name="password" class="form-control input-sm"
+                                <input id="password" type="password" name="password" class="form-control input-sm"
                                        placeholder="Password">
                                 </div>
                             </div>
@@ -50,7 +53,7 @@
                             </div>
 
                             <div class="col-xs-6 col-sm-6 col-md-8">
-                                <input class="btn btn-info btn btn-block" type="submit" value="Save">
+                                <input id="submit" class="btn btn-info btn btn-block" type="submit" value="Save">
                             </div>
 
                             
@@ -67,3 +70,32 @@
 
         </div>
 </div>
+
+
+
+<script type="text/javascript">
+$('#email').on('keyup',function(){
+$value=$(this).val();
+console.log($value);
+$.ajax({
+type : 'get',
+url : '{{URL::to('search')}}',
+data:{'search':$value},
+success:function(data){
+    console.log(data);
+if(data=="true"){
+    $('#email_exist').text("Email already exists");
+    $('#submit').attr("disabled", true);
+}
+else
+{
+    $('#email_exist').text("");
+    $('#submit').attr("disabled", false);
+}
+}
+});
+})
+</script>
+<script type="text/javascript">
+$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>

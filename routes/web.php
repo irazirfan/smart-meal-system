@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/search', 'HomeController@getEmail');
 
 //Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'LoginController@login')->name('login');
