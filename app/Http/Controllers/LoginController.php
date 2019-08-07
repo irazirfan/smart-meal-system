@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-   
-	public function login(){	
+
+	public function login(){
 
 		return view('login/login');
 	}
 
-	public function verify(Request $req){	
+	public function verify(Request $req){
 
 		$validator = Validator::make($req->all(), [
-            
+
             "email"     => "required",
             "password"  => "required"
 
@@ -40,12 +40,13 @@ class LoginController extends Controller
 
         	//Eloquent ORM
         	$result = User::where('email', $req->email)
-        			->where('password', $req->password)	
+        			->where('password', $req->password)
         			->get();
-			
+
 			if(count($result) > 0){
 
 				$req->session()->put('user', $req->email);
+                $req->session()->put('logged', $result);
 				return redirect()->route('home.index');
 			}else{
 				$req->session()->flash('msg', 'invalid email or password');

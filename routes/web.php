@@ -29,4 +29,5 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::group(['middleware'=>['authorize']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
+	Route::get('/expense', 'ExpenseController@expense')->name('expense.expense');
 });
