@@ -9,25 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-
-	// public function validSession($req){
-
-	// 	if($req->session()->has('user')){
-	// 		return true;
-	// 	}else{
-	// 		return false;
-	// 	}
-	// }
-
- //    public function login(Request $req){
-		
-	// 	if($this->validSession($req)){
-	// 		return view('home/login');
-	// 	}else{
-	// 		return redirect()->route('login');
-	// 	}
- //    }
-
     public function register(){
 
     	return view('home/register');
@@ -58,13 +39,13 @@ class HomeController extends Controller
     	$user->user_type = $req->user_type;
     	$user->save();
 
-    	return view('login.login');
+    	return redirect()->route('login');
     }
 
 	public function details($id){
 
 		$std = User::find($id);
-		
+
 		return view('home.details', ['std'=>$std]);
     }
 
@@ -73,7 +54,7 @@ class HomeController extends Controller
     	$stdList = User::all();
     	return view('home.stdlist', ['std'=> $stdList]);
     }
-	
+
 	public function edit($id){
 
 		$std = User::find($id);
