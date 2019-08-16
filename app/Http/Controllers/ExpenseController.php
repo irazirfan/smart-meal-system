@@ -16,4 +16,5 @@ class ExpenseController extends Controller
             ->get();
         return view('expense.expense', ['result'=> $expenseList]);
     }
+
 }

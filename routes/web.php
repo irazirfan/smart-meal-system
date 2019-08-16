@@ -30,4 +30,8 @@ Route::group(['middleware'=>['authorize']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
 	Route::get('/expense', 'ExpenseController@expense')->name('expense.expense');
+    Route::get('/mess', 'MessController@mess')->name('mess.mess');
+    Route::get('mess/create', 'MessController@create')->name('mess.create');
+    Route::post('mess/create', 'MessController@add');
+
 });
