@@ -41,13 +41,17 @@ class LoginController extends Controller
         	//Eloquent ORM
         	$result = User::where('email', $req->email)
         			->where('password', $req->password)
-        			->get();
+        			->first();
 
-			if(count($result) > 0){
+			if($result) {
 
 				$req->session()->put('user', $req->email);
-                $req->session()->put('logged', $result);
-				return redirect()->route('home.index');
+                $req->session()->put('name', $result->name);
+                $req->session()->put('mess_id', $result->mess_id);
+                $req->session()->put('status', $result->status);
+                $req->session()->put('user_type', $result->user_type);
+
+				return redirect()->route('mess.mess');
 			}else{
 				$req->session()->flash('msg', 'invalid email or password');
 				return redirect()->route('login');

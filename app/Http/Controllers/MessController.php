@@ -11,6 +11,7 @@ class MessController extends Controller
 {
     public function mess()
     {
+
         return view('mess/mess');
     }
 

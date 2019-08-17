@@ -3,10 +3,15 @@
 @include('../partials/dashboard')
 
 <br>
-<a href="/mess/members" class="view btn-sm active">View Member</a>
+@if(session('mess_id')!= null || session('mess_id')!= '')
+    <?php
+        $mess_id = session('mess_id');
+    ?>
+@endif
+<a href="/mess/members/{{$mess_id}}" class="view btn-sm active">View Member</a>
 
-{{--@if (user.user_type != "member") {--}}
+@if (session('user_type') != "member") {
 <a href="/mess/invite" class="view btn-sm active">Invite Member</a>
-{{--@endif--}}
+@endif
 
 <br><br><br>
