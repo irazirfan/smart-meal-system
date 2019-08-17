@@ -33,12 +33,7 @@ class LoginController extends Controller
         }
 
         else{
-        		//queryBuilder
-				// $result = DB::table('users')->where('email', $req->email)
-				// 	->where('password', $req->password)
-				// 	->get();
 
-        	//Eloquent ORM
         	$result = User::where('email', $req->email)
         			->where('password', $req->password)
         			->first();

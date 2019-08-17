@@ -42,9 +42,41 @@ class MessController extends Controller
 
         $user = User::where('email', session('user'))->first();
         $user->mess_id = $id;
-        $user->status = "invited";
+        $user->status = null;
         $user->save();
 
         return view('mess/mess');
+    }
+
+    public function viewMember($id)
+    {
+        $result = User::where('mess_id', $id)
+                        ->where('status','NOT LIKE','invited')
+                        ->get();
+
+        return view('mess.view-member', ['result'=>$result]);
+    }
+
+    public function invitation($id)
+    {
+        $result = Mess::where('id', $id)
+            ->first();
+
+        return view('mess.invitation', ['result'=>$result]);
+    }
+
+    public function accept($id)
+    {
+        session()->forget('mess_id');
+        session()->forget('status');
+
+        $user = User::where('email', session('user'))->first();
+        $user->status = 0;
+        $user->save();
+
+        session()->put('status', 0);
+        session()->put('mess_id', $id);
+
+        return redirect()->route('mess.mess');
     }
 }

@@ -33,5 +33,9 @@ Route::group(['middleware'=>['authorize']], function(){
     Route::get('/mess', 'MessController@mess')->name('mess.mess');
     Route::get('mess/create', 'MessController@create')->name('mess.create');
     Route::post('mess/create', 'MessController@add');
+    Route::get('/mess/{id}', 'MessController@viewMember')->name('mess.viewMember');
+    Route::get('/mess/invitation/{id}', 'MessController@invitation')->name('mess.invitation');
+    Route::get('mess/accept/{id}', 'MessController@accept')->name('mess.accept');
+
 
 });

@@ -9,7 +9,7 @@
                     <li class=""><a href="/"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
 
 
-                    <li><a href="/mess/<%= user.mess_id %>"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Mess</span></a></li>
+                    <li><a href="/mess"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Mess</span></a></li>
                     <li><a href="/expenses"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Expenses</span></a></li>
                     <li><a href="/meal"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Meal</span></a></li>
                     <li><a href="/calculation"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calculation</span></a>
@@ -42,12 +42,19 @@
                     <div class="col-md-5">
                         <div class="header-rightside">
                             <ul class="list-inline header-top pull-right">
+
+                                @if(session('user_type')== 'manager' && session('mess_id') == null)
                                 <li>
                                     <a href="/mess/create" class="view btn-sm active">Create Mess</a>
                                 </li>
+                                @endif
+
+                                @if(session('user_type')=='member' && session('status') == 'invited')
                                 <li>
-                                    <a href="/mess/invitation/<%= user.mess_id %>" class="view btn-sm active">Mess Invitation</a>
+                                    <a href="/mess/invitation/{{session('mess_id')}}" class="view btn-sm active">Mess Invitation</a>
                                 </li>
+                                @endif
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
                                             src="https://image.flaticon.com/icons/svg/17/17004.svg" alt="user">
