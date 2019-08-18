@@ -11,7 +11,7 @@ class MessController extends Controller
     public function mess()
     {
         $user = User::where('email', session('user'))->first();
-        //dd($user);
+
         return view('mess/mess' , ['user' => $user]);
     }
 
