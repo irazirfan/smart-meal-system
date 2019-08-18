@@ -39,7 +39,6 @@ class LoginController extends Controller
         			->first();
 
 			if($result) {
-
 				$req->session()->put('user', $req->email);
                 $req->session()->put('name', $result->name);
                 $req->session()->put('mess_id', $result->mess_id);

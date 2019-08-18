@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Mess;
 use App\User;
 use Validator;
@@ -11,8 +10,9 @@ class MessController extends Controller
 {
     public function mess()
     {
-
-        return view('mess/mess');
+        $user = User::where('email', session('user'))->first();
+        //dd($user);
+        return view('mess/mess' , ['user' => $user]);
     }
 
     public function Create()
@@ -54,7 +54,9 @@ class MessController extends Controller
                         ->where('status','NOT LIKE','invited')
                         ->get();
 
-        return view('mess.view-member', ['result'=>$result]);
+        $user = User::where('email', session('user'))->first();
+
+        return view('mess.view-member', ['result'=>$result,'user'=>$user]);
     }
 
     public function invitation($id)
@@ -62,20 +64,19 @@ class MessController extends Controller
         $result = Mess::where('id', $id)
             ->first();
 
-        return view('mess.invitation', ['result'=>$result]);
+        $user = User::where('email', session('user'))->first();
+
+        return view('mess.invitation', ['result'=>$result, 'user'=> $user]);
     }
 
-    public function accept($id)
+    public function accept(Request $req, $id)
     {
-        session()->forget('mess_id');
-        session()->forget('status');
-
         $user = User::where('email', session('user'))->first();
         $user->status = 0;
         $user->save();
 
-        session()->put('status', 0);
-        session()->put('mess_id', $id);
+        $req.session()->put('status', 0);
+        $req.session()->put('mess_id', $id);
 
         return redirect()->route('mess.mess');
     }

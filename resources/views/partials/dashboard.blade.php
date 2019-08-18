@@ -49,10 +49,10 @@
                                 </li>
                                 @endif
 
-                                @if(session('user_type')=='member' && session('status') == 'invited')
-                                <li>
-                                    <a href="/mess/invitation/{{session('mess_id')}}" class="view btn-sm active">Mess Invitation</a>
-                                </li>
+                                @if($user->user_type == 'member' && $user->status == 'invited')
+                                    <li>
+                                        <a href="/mess/invitation/{{session('mess_id')}}" class="view btn-sm active">Mess Invitation</a>
+                                    </li>
                                 @endif
 
                                 <li class="dropdown">
