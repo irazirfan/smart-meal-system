@@ -19,6 +19,7 @@ class MealController extends Controller
                     ->join('users', 'meals.email', '=', 'users.email')
                     ->select('meals.*','users.name')
                     ->get();
+        dd($meals);
 
         return view('meal/meal', ['user' => $user, 'meal' => $meal, 'meals' => $meals]);
     }
