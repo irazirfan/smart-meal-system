@@ -18,9 +18,16 @@ class MealController extends Controller
         $meals = Meal::where('meals.mess_id', session('mess_id'))
                     ->join('users', 'meals.email', '=', 'users.email')
                     ->select('meals.*','users.name')
+                    ->orderby('date', 'asc')
+                    ->get();
+
+        $mess_id = $user->mess_id;
+        $names = User::where('mess_id', $mess_id)
+            ->where('status','!=','invited')
+            ->get();
 
 
-        return view('meal/meal', ['user' => $user, 'meal' => $meal, 'meals' => $meals]);
+        return view('meal/meal', ['user' => $user, 'meal' => $meal, 'meals' => $meals, 'names' => $names]);
     }
 
     public function update(Request $req)
