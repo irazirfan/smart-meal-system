@@ -31,13 +31,15 @@
                                 </div>
                             </div>
 
-
-
                             <div class="col-xs-3 col-sm-3 col-md-3">
                                 <div class="form-group">
                                     <input type="submit" value="Save" class="btn btn-info btn-block">
                                 </div>
                             </div>
+
+                            @foreach ($errors->all() as $error)
+                                {{ $error }} <br>
+                            @endforeach
 
                         </div>
                     </form>

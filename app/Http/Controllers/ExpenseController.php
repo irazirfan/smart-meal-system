@@ -6,7 +6,8 @@ use App\Expense;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
+use Validator;
+
 
 class ExpenseController extends Controller
 {
@@ -24,6 +25,19 @@ class ExpenseController extends Controller
 
     public function add(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+
+            "amount" => "required",
+            "date"   => "required",
+        ]);
+
+        if($validator->fails()){
+
+            return back()
+                ->with('errors', $validator->errors())
+                ->withInput();
+        }
+
         $expense = new Expense();
         $expense->amount = $req->amount;
         $expense->email = session('user');
