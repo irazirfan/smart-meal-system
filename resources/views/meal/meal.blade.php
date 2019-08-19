@@ -69,10 +69,6 @@
 
 </div>
 
-{{--@for($i=0; $i < count($names); $i++)--}}
-{{--    <th colspan="3">{{ $names[$i]->name }}</th>--}}
-{{--@endfor--}}
-
 
 
 
@@ -80,79 +76,60 @@
 
 
     <div class="table-wrapper">
-{{--        <table border="1px" class="table-responsive card-list-table">--}}
-{{--            <thead>--}}
-{{--            <tr>--}}
-{{--                <th>Date</th>--}}
-
-{{--                {{dd($meals)}}--}}
-
-{{--                @for($i=0; $i < count($meals[count($meals)-1]); $i++)--}}
-{{--                <th colspan="3">{{ $meals[count($meals)-1][$i]->name }}</th>--}}
-{{--                @endfor--}}
-
-{{--            </tr>--}}
-{{--            </thead>--}}
-{{--            <tbody>--}}
-{{--            <tr style="font-weight: bolder">--}}
-{{--                <td data-title="Date"></td>--}}
-
-{{--                <% for(var i=0; i < date_list[date_list.length-1].length; i++) { %>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">B</td>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">L</td>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">D</td>--}}
-
-{{--            </tr>--}}
-
-{{--            <% for(var i=0; i < date_list.length; i++) { %>--}}
-{{--            <tr>--}}
-{{--                <td data-title="Date"></td>--}}
-{{--                <% for(var j=0; j < date_list[i].length; j++) { %>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].breakfast %></td>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].lunch %></td>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].dinner %></td>--}}
-{{--            </tr>--}}
-
-{{--            </tbody>--}}
-{{--        </table>--}}
-
-
-
-        <table table border="1px" class="table-responsive">
+        <table border="1px" class="table-responsive card-list-table">
             <thead>
-                <tr>
-                    <th>Date</th>
-                    @for($i=0; $i < count($names); $i++)
-                        <th colspan="3">{{ $names[$i]->name }}</th>
-                    @endfor
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td></td>
-                    @for($i=0; $i < count($names); $i++)
-                        <td>B</td>
-                        <td>L</td>
-                        <td>D</td>
-                    @endfor
-                </tr>
-
             <tr>
-                <td></td>
+                <th>Date</th>
+
+                <% for(var i=0; i < date_list[date_list.length-1].length; i++) { %>
+                <th colspan="3"><%= date_list[date_list.length-1][i].name %></th>
+
+
             </tr>
+            </thead>
+            <tbody>
+            <tr style="font-weight: bolder">
+                <td data-title="Date"></td>
+
+<<<<<<< HEAD
+
+                @for($j=0; $j < 5; $j++)
+                    <tr>
+                        <td>{{17+$j}}/08/2019</td>
+                        @for($i=0; $i < count($meals); $i++)
+                            <td>{{$meals[$i]->breakfast}}</td>
+                            <td>{{$meals[$i]->lunch}}</td>
+                            <td>{{$meals[$i]->breakfast}}</td>
+
+                            @if($i >= count($names)-1)
+                                @break
+                            @endif
+                        @endfor
+
+                    </tr>
+                @endfor
+
+
+=======
+                <% for(var i=0; i < date_list[date_list.length-1].length; i++) { %>
+                <td data-title="<%= date_list[date_list.length-1][i].name %>">B</td>
+                <td data-title="<%= date_list[date_list.length-1][i].name %>">L</td>
+                <td data-title="<%= date_list[date_list.length-1][i].name %>">D</td>
+
+            </tr>
+
+            <% for(var i=0; i < date_list.length; i++) { %>
+            <tr>
+                <td data-title="Date"></td>
+                <% for(var j=0; j < date_list[i].length; j++) { %>
+                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].breakfast %></td>
+                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].lunch %></td>
+                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].dinner %></td>
+            </tr>
+>>>>>>> d5d2d3dcc15f7f14aa1c935df0b644b1f10c3f7e
 
             </tbody>
         </table>
-
-
-
-
-
-
-
-
-
 
     </div>
     <br><br><br>
