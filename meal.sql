@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2019 at 11:32 PM
+-- Generation Time: Aug 19, 2019 at 01:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -33,15 +33,18 @@ CREATE TABLE `expenses` (
   `email` varchar(100) NOT NULL,
   `amount` double NOT NULL,
   `item` varchar(100) DEFAULT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `email`, `amount`, `item`, `date`) VALUES
-(1, 'irazirfan@gmail.com', 765, NULL, '2019-08-07');
+INSERT INTO `expenses` (`id`, `email`, `amount`, `item`, `date`, `updated_at`, `created_at`) VALUES
+(9, 'irazirfan@gmail.com', 145, 'Eggs', '2019-08-19', '2019-08-19 11:15:04', '2019-08-19 11:15:04'),
+(11, 'irazirfan@gmail.com', 1224, NULL, '2019-08-19', '2019-08-19 11:18:56', '2019-08-19 11:18:56');
 
 -- --------------------------------------------------------
 
@@ -151,7 +154,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `meals`
