@@ -69,9 +69,6 @@
 
 </div>
 
-{{--@for($i=0; $i < count($names); $i++)--}}
-{{--    <th colspan="3">{{ $names[$i]->name }}</th>--}}
-{{--@endfor--}}
 
 
 
@@ -80,41 +77,6 @@
 
 
     <div class="table-wrapper">
-{{--        <table border="1px" class="table-responsive card-list-table">--}}
-{{--            <thead>--}}
-{{--            <tr>--}}
-{{--                <th>Date</th>--}}
-
-{{--                {{dd($meals)}}--}}
-
-{{--                @for($i=0; $i < count($meals[count($meals)-1]); $i++)--}}
-{{--                <th colspan="3">{{ $meals[count($meals)-1][$i]->name }}</th>--}}
-{{--                @endfor--}}
-
-{{--            </tr>--}}
-{{--            </thead>--}}
-{{--            <tbody>--}}
-{{--            <tr style="font-weight: bolder">--}}
-{{--                <td data-title="Date"></td>--}}
-
-{{--                <% for(var i=0; i < date_list[date_list.length-1].length; i++) { %>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">B</td>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">L</td>--}}
-{{--                <td data-title="<%= date_list[date_list.length-1][i].name %>">D</td>--}}
-
-{{--            </tr>--}}
-
-{{--            <% for(var i=0; i < date_list.length; i++) { %>--}}
-{{--            <tr>--}}
-{{--                <td data-title="Date"></td>--}}
-{{--                <% for(var j=0; j < date_list[i].length; j++) { %>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].breakfast %></td>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].lunch %></td>--}}
-{{--                <td data-title="<%= date_list[i][j].name %>"><%= date_list[i][j].dinner %></td>--}}
-{{--            </tr>--}}
-
-{{--            </tbody>--}}
-{{--        </table>--}}
 
 
 
