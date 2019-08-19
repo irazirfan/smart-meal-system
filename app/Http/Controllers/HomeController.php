@@ -42,48 +42,48 @@ class HomeController extends Controller
     	return redirect()->route('login');
     }
 
-	public function details($id){
-
-		$std = User::find($id);
-
-		return view('home.details', ['std'=>$std]);
-    }
-
-    public function show(){
-
-    	$stdList = User::all();
-    	return view('home.stdlist', ['std'=> $stdList]);
-    }
-
-	public function edit($id){
-
-		$std = User::find($id);
-		return view('home.edit', ['std'=>$std]);
-    }
-
-    public function update(Request $req, $id){
-
-    	$user = User::find($id);
-
-    	$user->username = $req->uname;
-    	$user->name = $req->name;
-    	$user->dept = $req->dept;
-    	$user->cgpa = $req->cgpa;
-    	$user->save();
-
-		return redirect()->route('home.stdlist');
-    }
-	public function delete($id){
-
-		$std = User::find($id);
-		return view('home.delete', ['std'=>$std]);
-    }
-
-    public function destroy($id){
-
-		User::destroy($id);
-		return redirect()->route('home.stdlist');
-	}
+//	public function details($id){
+//
+//		$std = User::find($id);
+//
+//		return view('home.details', ['std'=>$std]);
+//    }
+//
+//    public function show(){
+//
+//    	$stdList = User::all();
+//    	return view('home.stdlist', ['std'=> $stdList]);
+//    }
+//
+//	public function edit($id){
+//
+//		$std = User::find($id);
+//		return view('home.edit', ['std'=>$std]);
+//    }
+//
+//    public function update(Request $req, $id){
+//
+//    	$user = User::find($id);
+//
+//    	$user->username = $req->uname;
+//    	$user->name = $req->name;
+//    	$user->dept = $req->dept;
+//    	$user->cgpa = $req->cgpa;
+//    	$user->save();
+//
+//		return redirect()->route('home.stdlist');
+//    }
+//	public function delete($id){
+//
+//		$std = User::find($id);
+//		return view('home.delete', ['std'=>$std]);
+//    }
+//
+//    public function destroy($id){
+//
+//		User::destroy($id);
+//		return redirect()->route('home.stdlist');
+//	}
 
     public function about(){
 

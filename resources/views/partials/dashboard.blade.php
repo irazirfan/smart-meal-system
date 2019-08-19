@@ -1,3 +1,5 @@
+@include('../partials/header')
+
 <body class="home">
 <div class="container-fluid display-table">
     <div class="row display-table-row">
@@ -20,7 +22,7 @@
             </div>
         </div>
         <div class="col-md-10 col-sm-11 display-table-cell v-align">
-            <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+{{--            <button type="button" class="slide-toggle">Slide Toggle</button>--}}
             <div class="row">
                 <header>
                     <div class="col-md-7">
@@ -62,10 +64,10 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="navbar-content">
-                                                <span></span>
+                                                <span>@if(session('user') != null) {{$user->name}} @endif</span>
                                                 <div class="divider">
                                                 </div>
-                                                <a href="/profile">View
+                                                <a href="/profile" class="view btn-sm active">View
                                                 Profile</a>
                                             </div>
                                         </li>
