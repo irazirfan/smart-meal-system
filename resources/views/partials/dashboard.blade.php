@@ -10,7 +10,7 @@
 
 
                     <li><a href="/mess"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Mess</span></a></li>
-                    <li><a href="/expenses"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Expenses</span></a></li>
+                    <li><a href="/expense"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Expenses</span></a></li>
                     <li><a href="/meal"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Meal</span></a></li>
                     <li><a href="/calculation"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calculation</span></a>
                     </li>

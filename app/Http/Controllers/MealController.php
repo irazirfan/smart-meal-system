@@ -5,15 +5,22 @@ use App\User;
 use App\Meal;
 use Illuminate\Http\Request;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 
 class MealController extends Controller
 {
     public function meal()
     {
         $user = User::where('email', session('user'))->first();
+
         $meal = Meal::where('email', session('user'))->first();
 
-        return view('meal/meal', ['user' => $user, 'meal' => $meal]);
+        $meals = Meal::where('meals.mess_id', session('mess_id'))
+                    ->join('users', 'meals.email', '=', 'users.email')
+                    ->select('meals.*','users.name')
+                    ->get();
+
+        return view('meal/meal', ['user' => $user, 'meal' => $meal, 'meals' => $meals]);
     }
 
     public function update(Request $req)
