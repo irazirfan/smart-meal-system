@@ -9,8 +9,6 @@
                 <ul>
 
                     <li class=""><a href="/"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-
-
                     <li><a href="/mess"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Mess</span></a></li>
                     <li><a href="/expense"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Expenses</span></a></li>
                     <li><a href="/meal"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Meal</span></a></li>
