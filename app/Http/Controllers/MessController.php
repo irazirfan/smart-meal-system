@@ -17,7 +17,7 @@ class MessController extends Controller
 
     public function Create()
     {
-        return view('mess/add');
+        return redirect()->route('mess.mess');
     }
 
     public function Add(Request $req)
