@@ -4,7 +4,7 @@
 
 <h2> Member List: </h2>
 
-@if($user->status != "invited" && (session('mess_id') != null || session('mess_id') != ''))
+{{--@if($user->status != "invited" && $user->mess_id != null || $user->mess_id != '')--}}
 @foreach($result as $value)
     <tr>
         <td scope="row">{{$value->name}}</td>
@@ -14,4 +14,4 @@
         <br>
     </tr>
 @endforeach
-@endif
+{{--@endif--}}

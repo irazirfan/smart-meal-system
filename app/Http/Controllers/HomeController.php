@@ -37,6 +37,7 @@ class HomeController extends Controller
     	$user->email = $req->email;
     	$user->password = $req->password;
     	$user->user_type = $req->user_type;
+    	$user->status = 0;
     	$user->save();
 
     	return redirect()->route('login');

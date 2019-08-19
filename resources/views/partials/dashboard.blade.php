@@ -43,7 +43,7 @@
                         <div class="header-rightside">
                             <ul class="list-inline header-top pull-right">
 
-                                @if(session('user_type')== 'manager' && session('mess_id') == null)
+                                @if(session('user_type')== 'manager' && $user->mess_id == null)
                                 <li>
                                     <a href="/mess/create" class="view btn-sm active">Create Mess</a>
                                 </li>

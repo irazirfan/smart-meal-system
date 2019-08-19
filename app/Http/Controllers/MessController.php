@@ -17,7 +17,9 @@ class MessController extends Controller
 
     public function Create()
     {
-        return view('mess.add');
+        $user = User::where('email', session('user'))->first();
+
+        return view('mess/add', ['user'=> $user]);
     }
 
     public function Add(Request $req)
@@ -45,16 +47,17 @@ class MessController extends Controller
         $user->status = null;
         $user->save();
 
-        return view('mess/mess');
+        return redirect()->route('mess.mess');
     }
 
-    public function viewMember($id)
+    public function viewMember()
     {
-        $result = User::where('mess_id', $id)
-                        ->where('status','NOT LIKE','invited')
-                        ->get();
-
         $user = User::where('email', session('user'))->first();
+
+        $mess_id = $user->mess_id;
+        $result = User::where('mess_id', $mess_id)
+                        ->where('status','!=','invited')
+                        ->get();
 
         return view('mess.view-member', ['result'=>$result,'user'=>$user]);
     }
