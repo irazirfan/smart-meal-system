@@ -41,9 +41,9 @@ class MealController extends Controller
             ->first();
         //dd($meal);
         if($meal) {
-            $meal->date = new DateTime('+2 day');
-            $meal->email = session('user');
-            $meal->mess_id = session('mess_id');
+            //$meal->date = new DateTime('+2 day');
+            //$meal->email = session('user');
+            //$meal->mess_id = session('mess_id');
 
             if($req->breakfast == "on" )
                 $meal->breakfast = 1;
@@ -63,7 +63,7 @@ class MealController extends Controller
 
         else {
             $meal = new Meal();
-            $meal->date = new DateTime('+1 day');
+            $meal->date = new DateTime('+2 day');
             $meal->email = session('user');
             $meal->mess_id = session('mess_id');
 
