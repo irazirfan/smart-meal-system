@@ -39,6 +39,7 @@ Route::group(['middleware'=>['authorize']], function(){
     Route::get('mess/accept/{id}', 'MessController@accept')->name('mess.accept');
     Route::get('/meal', 'MealController@meal')->name('meal.meal');
     Route::post('/meal', 'MealController@update')->name('meal.update');
+    Route::get('/tomorrows_meal', 'MealController@tomorrow')->name('meal.tomorrow');
     Route::get('/calculation', 'MealCalccontroller@calculation')->name('meal.calculation');
     Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile', 'ProfileController@update');

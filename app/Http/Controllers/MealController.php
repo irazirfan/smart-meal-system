@@ -87,4 +87,21 @@ class MealController extends Controller
 
         return view('meal/meal', ['user' => $user, 'meal' => $meal]);
     }
+
+    public function tomorrow(){
+        $date =  new DateTime('+2 days');
+        $date = $date->format("Y-m-d");
+        $user = User::where('email', session('user'))->first();
+        $tomorrow_meal = Meal::where('mess_id', $user->mess_id)
+            ->where('date', $date)
+            ->get();
+
+//        dd($tomorrow_meal);
+        $total = 0;
+        foreach ($tomorrow_meal as $val){
+            $total = $total + $val->breakfast + $val->lunch + $val->dinner;
+        }
+
+        return view('meal/tomorrow', ['user'=>$user, 'tomorrow_meal'=>$total]);
+    }
 }
